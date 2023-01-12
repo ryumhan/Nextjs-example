@@ -25,6 +25,7 @@
   },
   "plugins": ["react", "react-hooks", "prettier","@typescript-eslint"],
   "rules": {
+    "prettier/prettier": ["error", { "printWidth": 110 }],
     "react/no-unknown-property": [
       2,
       {

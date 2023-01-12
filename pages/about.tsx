@@ -1,12 +1,13 @@
 // Componet's Name is not mattered because default export should be assigend
 
-import Seo from "../components/Seo";
+import Seo from '../components/Seo';
 
 // Even this file creates as .js then, it will work very well.
-export default function About():React.ReactElement{ 
-    return (
+export default function About(): React.ReactElement {
+  return (
     <div>
-        <Seo title="About"/>
-        <h1 className="active">About</h1>
-    </div>)
+      <Seo title="About" />
+      <h1 className="active">About</h1>
+    </div>
+  );
 }

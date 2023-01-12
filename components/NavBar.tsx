@@ -1,18 +1,45 @@
-import Link from 'next/link'
+import styled from '@emotion/styled';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+const NavBarContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+`;
 
-export default function NavBar() :React.ReactElement{
-    const router = useRouter();
+const TabContainer = styled.div`
+  display: flex;
+  gap: 10px;
+`;
 
-     return (
-     <nav> 
-        <Link href='/' className={ router.pathname === "/" ? "active": ""}>
-        Home
-        </Link>
-        <Link href='/about' className={ router.pathname === "/about" ? "active": ""}>
-        About
-        </Link>
-    </nav>
-    );
+const LinkComponent = styled(Link)`
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+  &.active {
+    color: tomato;
+  }
+`;
+
+export default function NavBar(): React.ReactElement {
+  const router = useRouter();
+
+  return (
+    <NavBarContainer>
+      <img src="./vercel.svg" width="150px" />
+      <TabContainer>
+        <LinkComponent href="/" className={router.pathname === '/' ? 'active' : ''}>
+          Home
+        </LinkComponent>
+        <LinkComponent href="/about" className={router.pathname === '/about' ? 'active' : ''}>
+          About
+        </LinkComponent>
+      </TabContainer>
+    </NavBarContainer>
+  );
 }
