@@ -25,6 +25,14 @@
   },
   "plugins": ["react", "react-hooks", "prettier","@typescript-eslint"],
   "rules": {
+    "react/no-unknown-property": [
+      2,
+      {
+        "ignore": [
+          "jsx"
+        ]
+      }
+    ],
     "react/react-in-jsx-scope": 0,
     "@typescript-eslint/no-shadow": ["error"],
     "no-shadow": "off",
