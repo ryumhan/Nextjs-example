@@ -73,7 +73,7 @@
     "react/jsx-curly-brace-presence": "warn", // jsx 내 불필요한 중괄호 금지
     "import/extensions": "off",
     "import/no-unresolved": "off"
-  },  
+  },
   "globals": {
     "React": "writable"
   }

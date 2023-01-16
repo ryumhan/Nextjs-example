@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import Seo from '../components/Seo';
 
-const API_KEY = '33da22ec4e083dc59bb6f46242b9d2e6';
-
 interface Movie {
   id: string;
   poster_path: string;
@@ -13,9 +11,7 @@ export default function Home(): React.ReactElement {
   const [movies, setMovies] = useState<Movie[]>();
 
   const getMovies = async () => {
-    const { results } = await (
-      await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`)
-    ).json();
+    const { results } = await (await fetch('/api/movies')).json();
 
     setMovies(results);
   };
