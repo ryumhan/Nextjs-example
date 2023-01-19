@@ -11,10 +11,10 @@ interface IServerSideProps {
   error: boolean;
 }
 
-function Home({
+const Home = ({
   movies,
   error,
-}: InferGetServerSidePropsType<GetServerSideProps<IServerSideProps>>): React.ReactElement {
+}: InferGetServerSidePropsType<GetServerSideProps<IServerSideProps>>): React.ReactElement => {
   return (
     <div>
       <div className="container">
@@ -54,7 +54,7 @@ function Home({
       `}</style>
     </div>
   );
-}
+};
 
 export const getServerSideProps: GetServerSideProps<IServerSideProps> = async () => {
   const { results } = await (await fetch(`http://localhost:3000/api/movies`)).json();

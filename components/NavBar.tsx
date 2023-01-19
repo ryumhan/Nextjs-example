@@ -26,7 +26,7 @@ const LinkComponent = styled(Link)`
   }
 `;
 
-export default function NavBar(): React.ReactElement {
+export const NavBar = (): React.ReactElement => {
   const router = useRouter();
 
   return (
@@ -42,4 +42,6 @@ export default function NavBar(): React.ReactElement {
       </TabContainer>
     </NavBarContainer>
   );
-}
+};
+
+export default NavBar;

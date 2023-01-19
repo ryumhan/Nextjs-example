@@ -3,11 +3,13 @@
 import Seo from '../components/Seo';
 
 // Even this file creates as .js then, it will work very well.
-export default function About(): React.ReactElement {
+export const About = (): React.ReactElement => {
   return (
     <div>
       <Seo title="About" />
       <h1 className="active">About</h1>
     </div>
   );
-}
+};
+
+export default About;
