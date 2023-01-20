@@ -31,7 +31,7 @@ export const NavBar = (): React.ReactElement => {
 
   return (
     <NavBarContainer>
-      <img src="./vercel.svg" width="150px" />
+      <img src="../vercel.svg" width="150px" />
       <TabContainer>
         <LinkComponent href="/" className={router.pathname === '/' ? 'active' : ''}>
           Home

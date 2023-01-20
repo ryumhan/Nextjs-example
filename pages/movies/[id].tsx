@@ -2,8 +2,12 @@ import { useRouter } from 'next/router';
 
 const Detail = (): React.ReactElement => {
   const router = useRouter();
-  console.log(router);
-  return <div>Detail</div>;
+
+  return (
+    <div>
+      <h4>{router.query.title || 'Loading...'}</h4>
+    </div>
+  );
 };
 
 export default Detail;

@@ -1,4 +1,6 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Seo from '../components/Seo';
 
 interface Movie {
@@ -15,6 +17,20 @@ const Home = ({
   movies,
   error,
 }: InferGetServerSidePropsType<GetServerSideProps<IServerSideProps>>): React.ReactElement => {
+  const router = useRouter();
+
+  const handleClick = (id: string, title: string) => {
+    router.push(
+      {
+        pathname: `/movies/${id}`,
+        query: {
+          title,
+        },
+      },
+      `/movies/${id}`,
+    );
+  };
+
   return (
     <div>
       <div className="container">
@@ -23,9 +39,27 @@ const Home = ({
         {movies?.map((movie: Movie) => {
           return (
             <div key={movie.id}>
-              <div className="movie" key={movie.id}>
+              <div
+                className="movie"
+                key={movie.id}
+                onClick={() => {
+                  handleClick(movie.id, movie.original_title);
+                }}
+              >
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
-                <h4>{movie.original_title}</h4>
+                <h4>
+                  <Link
+                    href={{
+                      pathname: `/movies/${movie.id}`,
+                      query: {
+                        title: movie.original_title,
+                      },
+                    }}
+                    as={`/movies/${movie.id}`}
+                  >
+                    {movie.original_title}
+                  </Link>
+                </h4>
               </div>
             </div>
           );
