@@ -1,8 +1,10 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import Seo from '../../components/Seo';
 
+type Params = string[];
+
 interface IServerSideProps {
-  params: string[];
+  params: Params;
   error: boolean;
 }
 
@@ -19,9 +21,8 @@ const Detail = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps<IServerSideProps> = async (params: {
-  params: string[];
-}) => {
+export const getServerSideProps: GetServerSideProps = async (context: GetServerSidePropsContext) => {
+  const { params } = context;
   if (!params) {
     return {
       props: {
@@ -32,7 +33,7 @@ export const getServerSideProps: GetServerSideProps<IServerSideProps> = async (p
   }
 
   return {
-    props: { params, error: false },
+    props: { params: params.params, error: false },
   };
 };
 
