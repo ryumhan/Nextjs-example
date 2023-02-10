@@ -1,4 +1,5 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Seo from '../components/Seo';
@@ -37,8 +38,18 @@ const Home = ({
                 onClick={() => {
                   handleClick(movie.id, movie.original_title);
                 }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  flexDirection: 'column',
+                }}
               >
-                <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt={movie.id + movie.original_title}
+                  width={200}
+                  height={300}
+                />
                 <h4>
                   <Link href={`/movies/${movie.original_title}/${movie.id}`}>{movie.original_title}</Link>
                 </h4>
@@ -75,7 +86,10 @@ const Home = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps<IServerSideProps> = async () => {
+export const getServerSideProps: GetServerSideProps<IServerSideProps> = async ({ res }) => {
+  // caching data
+  res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59');
+
   const { results } = await (await fetch(`http://localhost:3000/api/movies`)).json();
   if (!results) {
     return {

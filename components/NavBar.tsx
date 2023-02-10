@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -31,7 +32,7 @@ export const NavBar = (): React.ReactElement => {
 
   return (
     <NavBarContainer>
-      <img src="./vercel.svg" width="150px" />
+      <Image src="./vercel.svg" width={150} height={150} alt="test" />
       <TabContainer>
         <LinkComponent href="/" className={router.pathname === '/' ? 'active' : ''}>
           Home

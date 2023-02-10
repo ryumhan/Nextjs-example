@@ -2,6 +2,7 @@
 
 const nextConfig = {
   reactStrictMode: true,
+  output: 'standalone',
   async redirects() {
     return [
       {
@@ -22,6 +23,15 @@ const nextConfig = {
         destination: `https://api.themoviedb.org/3/movie/:id?api_key=${process.env.API_KEY}`,
       },
     ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'image.tmdb.org',
+        pathname: '/t/p/w500/*',
+      },
+    ],
   },
 };
 
